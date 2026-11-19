@@ -250,6 +250,7 @@ static int run_child(int argc, char **argv)
                 if (!ReadFile(reads[stream],buffer,sizeof buffer,&n,NULL) || !n) break;
 #else
                 ssize_t n = read(pipes[stream][0],buffer,sizeof buffer);
+                if (n < 0 && errno == EINTR) continue;
                 if (n <= 0) break;
 #endif
                 size_t keep = (size_t)n;
@@ -267,6 +268,8 @@ static int run_child(int argc, char **argv)
         if (!reason && now_seconds() - start > timeout) {
             reason = 6; fputs("[TIMEOUT] wall-clock execution limit\n",stderr);
         }
+        /* An empty drain is final only if the child had already exited. */
+        if (reason || (exited && read_this_cycle == 0)) break;
 #ifdef _WIN32
         DWORD code;
         if (!exited && GetExitCodeProcess(pi.hProcess,&code) && code != STILL_ACTIVE) {
@@ -279,7 +282,7 @@ static int run_child(int argc, char **argv)
             exited = 1;
         }
 #endif
-        if (reason || (exited && read_this_cycle == 0)) break;
+        if (exited) continue;
 #ifdef _WIN32
         Sleep(10);
 #else

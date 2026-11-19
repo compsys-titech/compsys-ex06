@@ -18,7 +18,7 @@ b596d91ceaff6298 tests/test_main.c
 456826d88a372485 tests/test_registers.c
 a6788c5da8bf273f tests/test_support.c
 e87a8377ce590ffb tests/test_support.h
-fcd732e2424fd236 tools/guard.c
+4310bb71472e7871 tools/guard.c
 f652b84fe4b6b01e tools/probe.c
 615a72c4ca34a2ae tools/run.ps1
 e40b27a483de1081 tools/run.sh
