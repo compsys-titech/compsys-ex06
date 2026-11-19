@@ -1,0 +1,5 @@
+/build/*
+!/build/.gitkeep
+*.o
+*.exe
+.DS_Store
