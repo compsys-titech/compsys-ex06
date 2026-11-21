@@ -93,11 +93,13 @@ $env:CC = $compiler
 |---|---|
 | macOS 27.2.1（26B131），Apple M4／arm64，Mac16,12 | ネイティブC17を検証 |
 | Apple Clang 17.0.0（clang-1700.6.3.2），target arm64-apple-darwin27.2.0，GNU Make 3.81 | `-O0`／`-O2`で検証 |
-| Debian GNU/Linux | 独立検証は後続工程・未確認 |
+| Debian GNU/Linux 13.6／x86_64，Intel Xeon Platinum 8573C | GCC 14.2.0，GNU Make 4.4.1で独立検証．Clangは未導入・未確認 |
 | Windows x64 | TA確認待ち・未確認 |
 | 西8実習室GNU/Linux | TA確認待ち・未確認 |
 
-この記載は測定したmacOS環境についての結果です．別OSの動作保証や，数値テストによる構成条件の証明ではありません．
+macOSとDebianの各環境で正解・別解の通常回帰84/84，CRLF別解の`-O2 make test`連続30/30（各2,535比較），機能誤実装41件の検出を確認しました．最終RESULTの出力回収，timeout・SIGTERM・Ctrl-C後の子孫回収も確認しました．指定部品の構成は別途ソースで確認します．
+
+DebianではGCCのASan＋UBSanを確認しました．macOSでは異常系・実行条件31件，既定Clang 17のUBSan単独，Xcode Clang 21／SDK 27.2のASan＋UBSanを確認しました．既定Clang 17のASan＋UBSanはC17プローブが時間上限に達しました．
 
 <a id="checkout"></a>
 ## 4．取得・更新
