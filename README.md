@@ -21,7 +21,7 @@
 - [17．エラー分類とログ](#errors)
 - [18．レポートで記録するもの](#report)
 - [19．トラブルシューティング](#trouble)
-- [20．提出物と後続工程](#submission)
+- [20．提出物と締切](#submission)
 - [21．出典](#sources)
 
 <a id="purpose"></a>
@@ -305,7 +305,7 @@ RegisterFileのx0は常に0を読み，x0への書込みを無視します．両
 <a id="report"></a>
 ## 18．レポートで記録するもの
 
-次を図・コード・実行結果で対応付けます．
+[正式レポート記入ガイド](report/README.md)と[空欄Word雛形](report/ex06-report-template.docx)を使い，次を図・コード・実行結果で対応付けます．
 
 - RegisterFile内部接続図：Decoder5，32個のRegister，2個のMUX32，x0，配線変数と制御値．
 - Register／RegisterFile状態推移記録：呼出し順，入力，制御，前状態，期待出力，実出力，後状態，合否，選定理由．
@@ -327,11 +327,11 @@ FAILは最初の安定IDと入力・expected・actual・before・afterを確認�
 TIMEOUTや出力超過はループ条件・出力回数を確認します．最終RESULTがない終了0も成功扱いしません．`build`がsymlink／reparse pointなら処理を拒否します．教材本体を実ディレクトリへ取得して使います．`make clean`は学生ソースを消しません．
 
 <a id="submission"></a>
-## 20．提出物と後続工程
+## 20．提出物と締切
 
-提出名の候補は`学籍番号_ex06_code.zip`と`学籍番号_ex06_report.pdf`です．**ZIPの正式な内容，Word雛形，提出手順は後続の資料整備工程で最終確定します．** 現段階に存在しないレポートファイルへのリンクは設けていません．
+Science Tokyo LMSに`学籍番号_ex06_code.zip`と`学籍番号_ex06_report.pdf`を提出します．**第6回課題の締切：Science Tokyo LMSで通知**
 
-課題2ファイルと独自テスト，図・状態推移・メモリ記録の対応を保持してください．正式な提出内容・締切はScience Tokyo LMSの案内に従います．ここで配点・締切日・遅延減点率を新たに定めません．
+ZIPには直下から`tasks/register_task.c`，`tasks/memory_task.c`，`tests/student_cases.c`の3件だけを格納します．親フォルダーを付けず，図1・図2と表1・表2は提出PDFに含めます．Word原稿は手元に保管します．作成・展開確認の手順は[レポート記入ガイド](report/README.md)を参照してください．
 
 <a id="sources"></a>
 ## 21．出典
